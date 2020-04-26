@@ -26,7 +26,7 @@ public class MealsUtil {
 
     public static List<MealTo> getFilteredWithExcess(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         // TODO return filtered list with correctly excess field
-        final Map<LocalDate, Integer> sumOfCaloriesByDate = new HashMap<>;
+        final Map<LocalDate, Integer> sumOfCaloriesByDate = new HashMap<>();
         meals.forEach(meal -> sumOfCaloriesByDate.merge(meal.getDateTime().toLocalDate(), meal.getCalories(), Integer::sum);
 
         final List<MealTo> mealsWithExcess = new ArrayList<>();
