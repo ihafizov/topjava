@@ -7,7 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import java.util.Arrays;
 import java.util.*;
 
 public class MealsUtil {
@@ -30,18 +29,18 @@ public class MealsUtil {
         final Map<LocalDate, Integer> sumOfCaloriesByDate = new HashMap<>;
         meals.forEach(meal -> sumOfCaloriesByDate.merge(meal.getDateTime().toLocalDate(), meal.getCalories(), Integer::sum);
 
-        final List<MealTo> mealWithExcess = new ArrayList<>();
+        final List<MealTo> mealsWithExcess = new ArrayList<>();
         meals.forEach(meal -> {
             if (TimeUtil.isBetween(meal.getDateTime(), startTime, endTime)) {
-                mealWithExcess.add(createMealWithExcess)
+                mealsWithExcess.add(createMealWithExcess(meal, sumOfCaloriesByDate.get(meal.getDateTime().toLocalDate()) > caloriesPerDay)))
             }
         });
 
-        return null;
+        return mealsWithExcess;
     }
 
     public static MealTo createMealWithExcess(Meal meal, boolean excess) {
-        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), )
+        return new MealTo(meal.getDateTime(), meal.getDescription(), meal.getCalories(), excess);
     }
 
 
