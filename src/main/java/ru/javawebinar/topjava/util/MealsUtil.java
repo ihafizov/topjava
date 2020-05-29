@@ -27,12 +27,12 @@ public class MealsUtil {
     public static List<MealTo> getFilteredWithExcess(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
         // TODO return filtered list with correctly excess field
         final Map<LocalDate, Integer> sumOfCaloriesByDate = new HashMap<>();
-        meals.forEach(meal -> sumOfCaloriesByDate.merge(meal.getDateTime().toLocalDate(), meal.getCalories(), Integer::sum);
+        meals.forEach(meal -> sumOfCaloriesByDate.merge(meal.getDateTime().toLocalDate(), meal.getCalories(), Integer::sum));
 
         final List<MealTo> mealsWithExcess = new ArrayList<>();
         meals.forEach(meal -> {
             if (TimeUtil.isBetween(meal.getDateTime(), startTime, endTime)) {
-                mealsWithExcess.add(createMealWithExcess(meal, sumOfCaloriesByDate.get(meal.getDateTime().toLocalDate()) > caloriesPerDay)))
+                mealsWithExcess.add(createMealWithExcess(meal, sumOfCaloriesByDate.get(meal.getDateTime().toLocalDate()) > caloriesPerDay)));
             }
         });
 
